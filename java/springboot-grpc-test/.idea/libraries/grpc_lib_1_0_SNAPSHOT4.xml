@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="grpc_lib-1.0-SNAPSHOT4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/grpc_lib/target/grpc_lib-1.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

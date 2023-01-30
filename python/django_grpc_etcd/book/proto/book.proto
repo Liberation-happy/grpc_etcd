@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package book;
+
+import "google/protobuf/empty.proto";
+
+service BookController {
+    rpc List(BookListRequest) returns (stream Book) {}
+    rpc Create(Book) returns (Book) {}
+    rpc Retrieve(BookRetrieveRequest) returns (Book) {}
+    rpc Update(Book) returns (Book) {}
+    rpc Destroy(Book) returns (google.protobuf.Empty) {}
+}
+
+message Book {
+    int64 id = 1;
+    string title = 2;
+    string comment = 3;
+}
+
+message BookListRequest {
+}
+
+message BookRetrieveRequest {
+    int64 id = 1;
+}
