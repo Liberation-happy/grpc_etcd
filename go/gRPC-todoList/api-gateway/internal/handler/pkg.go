@@ -39,3 +39,11 @@ func PanicIfTaskError(err error) {
 		panic(err)
 	}
 }
+
+func PanicIfBookError(err error) {
+	if err != nil {
+		err = errors.New("BookService--" + err.Error())
+		util.LogrusObj.Info(err)
+		panic(err)
+	}
+}

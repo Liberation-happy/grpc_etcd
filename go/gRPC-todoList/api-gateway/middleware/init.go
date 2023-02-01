@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// 接受服务实例，并存到gin.Key中
+// InitMiddleware 接受服务实例，并存到gin.Key中
 func InitMiddleware(service []interface{}) gin.HandlerFunc {
 	return func(context *gin.Context) {
 		// 将实例存在gin.Keys中
@@ -14,11 +14,12 @@ func InitMiddleware(service []interface{}) gin.HandlerFunc {
 		context.Keys["task"] = service[1]
 		context.Keys["python_server"] = service[2]
 		context.Keys["java_server"] = service[3]
+		context.Keys["book"] = service[4]
 		context.Next()
 	}
 }
 
-// 错误处理中间件
+// ErrorMiddleware 错误处理中间件
 func ErrorMiddleware() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		defer func() {

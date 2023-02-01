@@ -29,6 +29,8 @@ func NewRouter(service ...interface{}) *gin.Engine {
 		// java服务
 		v1.POST("/java", handler.GetJavaInfo)
 
+		v1.GET("book", handler.GetBookList)
+
 		// 需要登录保护
 		authed := v1.Group("/")
 		authed.Use(middleware.JWT())

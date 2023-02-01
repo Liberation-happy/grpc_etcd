@@ -32,6 +32,7 @@ class EtcdHandleServ():
 
     def register_service(self):
         etcd_client = EtcdClient(host=self.etcd_ip, port=self.etcd_port)
+        print(self.etcd_prefix)
         etcd_client.put("/{}/{}".format(self.etcd_prefix, self.endpoint), json.dumps({
             "name":self.etcd_prefix,"addr":self.endpoint,"version":"","weight": 0
         }))

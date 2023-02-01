@@ -137,7 +137,7 @@ GRPC_ETCD_CONFIG = {
         "SERVICE_PORT": 10003,
         "ETCD_IP": "127.0.0.1",
         "ETCD_PORT": 2379,
-        "ETCD_PREFIX": "python_server",
+        "ETCD_PREFIX": "book",
         "SERVICE_IP": "127.0.0.1"
     }
 }

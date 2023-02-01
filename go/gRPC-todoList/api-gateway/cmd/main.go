@@ -49,6 +49,7 @@ func startListen() {
 	taskServiceName := viper.GetString("domain.task")
 	pythonServiceName := viper.GetString("domain.python")
 	javaServiceName := viper.GetString("domain.java")
+	BookServiceName := viper.GetString("domain.book")
 
 	// RPC 连接
 	connUser, err := RPCConnect(ctx, userServiceName, etcdRegister)
@@ -75,11 +76,17 @@ func startListen() {
 	}
 	JavaService := service.NewJavaHelloServiceClient(connJava)
 
+	connBook, err := RPCConnect(ctx, BookServiceName, etcdRegister)
+	if err != nil {
+		return
+	}
+	BookService := service.NewBookControllerClient(connBook)
+
 	// 加入熔断 TODO main太臃肿了
 	//wrapper.NewServiceWrapper(userServiceName)
 	//wrapper.NewServiceWrapper(taskServiceName)
 
-	ginRouter := routes.NewRouter(userService, taskService, PythonService, JavaService)
+	ginRouter := routes.NewRouter(userService, taskService, PythonService, JavaService, BookService)
 	server := &http.Server{
 		Addr:           viper.GetString("server.port"),
 		Handler:        ginRouter,
